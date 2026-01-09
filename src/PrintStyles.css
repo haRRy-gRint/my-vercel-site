@@ -1,0 +1,291 @@
+@media print {
+
+    /* Hide non-resume elements */
+    nav,
+    .navbar,
+    footer,
+    .footer,
+    .matrix-bg,
+    canvas,
+    .bg-blobs,
+    body::before,
+    body::after,
+    .hero-btns,
+    .section-subtitle,
+    .badge,
+    .spider-web,
+    .scanline-circle,
+    .hero-image-border,
+    .target-lock,
+    .terminal-header-text,
+    .scanline-container::after,
+    .skill-progress-fill::after {
+        display: none !important;
+    }
+
+    /* Reset body and layout for print */
+    body {
+        background-color: white !important;
+        color: black !important;
+        font-family: 'Inter', sans-serif !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .app {
+        background: white !important;
+    }
+
+    .container {
+        max-width: 100% !important;
+        padding: 0 1cm !important;
+        margin: 0 !important;
+    }
+
+    .section {
+        padding: 1rem 0 !important;
+        page-break-inside: avoid;
+    }
+
+    /* Hero Section for Print */
+    .hero {
+        min-height: auto !important;
+        padding-top: 2rem !important;
+        text-align: left !important;
+    }
+
+    .hero-content {
+        max-width: 100% !important;
+        margin: 0 !important;
+        text-align: left !important;
+    }
+
+    .hero-image-wrapper {
+        float: right;
+        width: 100px !important;
+        height: 100px !important;
+        margin: 0 0 1rem 1rem !important;
+    }
+
+    .hero-profile-img {
+        filter: none !important;
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+
+    h1,
+    .glitch {
+        font-size: 28pt !important;
+        color: black !important;
+        margin-bottom: 0.5rem !important;
+        text-transform: none !important;
+    }
+
+    .glitch::before,
+    .glitch::after {
+        display: none !important;
+    }
+
+    .hero-description {
+        font-size: 11pt !important;
+        color: #444 !important;
+        margin: 0 0 1.5rem 0 !important;
+        max-width: 80% !important;
+    }
+
+    /* About Section */
+    .about-grid {
+        display: block !important;
+    }
+
+    .about-image-container {
+        display: none !important;
+    }
+
+    .about-text-wrapper {
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    .about-text p {
+        font-size: 10pt !important;
+        color: #333 !important;
+        margin-bottom: 0.8rem !important;
+        text-indent: 0 !important;
+    }
+
+    .about-stats {
+        display: none !important;
+    }
+
+    .about-extra {
+        display: flex;
+        gap: 2rem;
+        margin-top: 1rem;
+        border-top: 1px solid #eee;
+        padding-top: 1rem;
+    }
+
+    .cyber-label {
+        font-weight: bold !important;
+        color: black !important;
+        font-size: 9pt !important;
+    }
+
+    /* Experience and Education */
+    .experience-grid {
+        display: block !important;
+    }
+
+    .exp-column {
+        margin-bottom: 2rem !important;
+    }
+
+    .column-title {
+        font-size: 14pt !important;
+        color: black !important;
+        border-left: 4px solid black !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .timeline-item,
+    .cert-item {
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        margin-bottom: 1.2rem !important;
+    }
+
+    .timeline-date {
+        color: #666 !important;
+        font-size: 9pt !important;
+        float: right;
+    }
+
+    .timeline-item h4,
+    .cert-item h4 {
+        font-size: 11pt !important;
+        color: black !important;
+        margin-bottom: 0.2rem !important;
+    }
+
+    .timeline-item h5 {
+        color: #444 !important;
+        font-size: 10pt !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .timeline-details li {
+        font-size: 9pt !important;
+        color: #333 !important;
+        margin-bottom: 0.3rem !important;
+        padding-left: 1rem !important;
+    }
+
+    .timeline-details li::before {
+        content: "•" !important;
+        color: black !important;
+    }
+
+    /* Skills */
+    .skills-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    .skill-card {
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+    }
+
+    .skill-header {
+        margin-bottom: 0.8rem !important;
+        padding-bottom: 0.3rem !important;
+        border-bottom: 1px solid #eee !important;
+    }
+
+    .skill-icon-box {
+        display: none !important;
+    }
+
+    .skill-info h3 {
+        font-size: 11pt !important;
+        color: black !important;
+    }
+
+    .skill-name {
+        font-size: 9pt !important;
+        color: #333 !important;
+    }
+
+    .skill-value {
+        display: none !important;
+    }
+
+    .skill-progress {
+        height: 4px !important;
+        background: #f0f0f0 !important;
+        border: none !important;
+    }
+
+    .skill-progress-fill {
+        background: #333 !important;
+        box-shadow: none !important;
+    }
+
+    /* Projects */
+    .projects-grid {
+        display: block !important;
+    }
+
+    .project-card {
+        display: flex !important;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        page-break-inside: avoid;
+    }
+
+    .project-image {
+        width: 150px !important;
+        height: 100px !important;
+        border-radius: 4px !important;
+    }
+
+    .project-content {
+        padding: 0 !important;
+    }
+
+    .project-tags {
+        margin: 0.5rem 0 !important;
+    }
+
+    .tag {
+        background: #f0f0f0 !important;
+        color: #444 !important;
+        border: none !important;
+        font-size: 8pt !important;
+    }
+
+    .project-links {
+        display: none !important;
+    }
+
+    /* Contact */
+    #contact {
+        display: none !important;
+    }
+
+    /* Typography */
+    .gradient-text {
+        background: none !important;
+        -webkit-text-fill-color: black !important;
+        color: black !important;
+    }
+}

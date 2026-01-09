@@ -27,8 +27,8 @@ const Hero = () => {
             <a href="#projects" className="btn btn-primary">
               View Projects <ArrowRight size={18} />
             </a>
-            <button className="btn btn-outline">
-              Download CV <Download size={18} />
+            <button onClick={() => window.print()} className="btn btn-outline">
+              Print Resume (PDF) <Download size={18} />
             </button>
           </div>
         </div>
