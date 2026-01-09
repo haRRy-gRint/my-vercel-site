@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Mail, Send, MapPin, Phone } from 'lucide-react'
+import { Mail, Send, MapPin, Phone, Github, Linkedin } from 'lucide-react'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -79,6 +79,22 @@ const Contact = () => {
               <div className="info-content">
                 <span className="info-label">COMMS: VOIP</span>
                 <p className="info-value">+91 7020125096</p>
+              </div>
+            </div>
+
+            <div className="info-item">
+              <Github className="info-icon" size={18} />
+              <div className="info-content">
+                <span className="info-label">REPO: GITHUB</span>
+                <a href="https://github.com/haRRy-gRint/" target="_blank" rel="noreferrer" className="info-link">haRRy-gRint</a>
+              </div>
+            </div>
+
+            <div className="info-item">
+              <Linkedin className="info-icon" size={18} />
+              <div className="info-content">
+                <span className="info-label">PROF: LINKEDIN</span>
+                <a href="https://linkedin.com/in/harsh-ganeshwade" target="_blank" rel="noreferrer" className="info-link">harsh-ganeshwade</a>
               </div>
             </div>
           </div>
@@ -199,6 +215,17 @@ const Contact = () => {
         .info-value {
           font-size: 1rem;
           color: var(--text-secondary);
+        }
+
+        .info-link {
+          font-size: 1rem;
+          color: var(--text-secondary);
+          transition: var(--transition);
+        }
+
+        .info-link:hover {
+          color: var(--primary);
+          text-shadow: 0 0 10px var(--primary-glow);
         }
 
         .contact-form-wrapper {

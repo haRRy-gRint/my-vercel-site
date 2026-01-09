@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { Github, Linkedin, Menu, X } from 'lucide-react'
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
+
+  const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +27,27 @@ const Navbar = () => {
             <div className="lag-wrapper">
               <span className="ticker-text">NO SYSTEM IS SAFE // NO SYSTEM IS SAFE // NO SYSTEM IS SAFE // NO SYSTEM IS SAFE // NO SYSTEM IS SAFE // NO SYSTEM IS SAFE</span>
             </div>
+          </div>
+
+          <div className={`nav-links ${isOpen ? 'active' : ''}`}>
+            <a href="#about" onClick={() => setIsOpen(false)}>About</a>
+            <a href="#skills" onClick={() => setIsOpen(false)}>Skills</a>
+            <a href="#experience" onClick={() => setIsOpen(false)}>Experience</a>
+            <a href="#projects" onClick={() => setIsOpen(false)}>Projects</a>
+            <a href="#contact" onClick={() => setIsOpen(false)}>Contact</a>
+
+            <div className="social-links">
+              <a href="https://github.com/haRRy-gRint/" target="_blank" rel="noreferrer" title="GitHub">
+                <Github size={20} />
+              </a>
+              <a href="https://linkedin.com/in/harsh-ganeshwade" target="_blank" rel="noreferrer" title="LinkedIn">
+                <Linkedin size={20} />
+              </a>
+            </div>
+          </div>
+
+          <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </div>
         </div>
       </div>

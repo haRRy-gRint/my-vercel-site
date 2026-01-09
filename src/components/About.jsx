@@ -62,10 +62,10 @@ const About = () => {
             </div>
 
             <div className="about-social">
-              <a href="https://github.com/harshganeshwade" target="_blank" rel="noreferrer" className="social-btn cyber-btn">
+              <a href="https://github.com/haRRy-gRint/" target="_blank" rel="noreferrer" className="social-btn cyber-btn">
                 <Github size={18} /> GITHUB_AUTH
               </a>
-              <a href="https://linkedin.com/in/harshganeshwade" target="_blank" rel="noreferrer" className="social-btn cyber-btn">
+              <a href="https://linkedin.com/in/harsh-ganeshwade" target="_blank" rel="noreferrer" className="social-btn cyber-btn">
                 <Linkedin size={18} /> LINKEDIN_CONNECT
               </a>
             </div>
