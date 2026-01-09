@@ -1,5 +1,4 @@
 import React from 'react'
-import { Github, Linkedin } from 'lucide-react'
 import profileImg from '../assets/profile.jpg'
 
 const About = () => {
@@ -61,14 +60,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className="about-social">
-              <a href="https://github.com/haRRy-gRint/" target="_blank" rel="noreferrer" className="social-btn cyber-btn">
-                <Github size={18} /> GITHUB_AUTH
-              </a>
-              <a href="https://linkedin.com/in/harsh-ganeshwade" target="_blank" rel="noreferrer" className="social-btn cyber-btn">
-                <Linkedin size={18} /> LINKEDIN_CONNECT
-              </a>
-            </div>
+
           </div>
         </div>
       </div>

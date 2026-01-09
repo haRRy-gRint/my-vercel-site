@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Github, Linkedin, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
@@ -29,16 +29,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className={`nav-links ${isOpen ? 'active' : ''}`}>
-            <div className="social-links">
-              <a href="https://github.com/haRRy-gRint/" target="_blank" rel="noreferrer" title="GitHub">
-                <Github size={20} />
-              </a>
-              <a href="https://linkedin.com/in/harsh-ganeshwade" target="_blank" rel="noreferrer" title="LinkedIn">
-                <Linkedin size={20} />
-              </a>
-            </div>
-          </div>
+
 
           <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X size={24} /> : <Menu size={24} />}
