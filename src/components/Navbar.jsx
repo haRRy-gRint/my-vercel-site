@@ -30,12 +30,6 @@ const Navbar = () => {
           </div>
 
           <div className={`nav-links ${isOpen ? 'active' : ''}`}>
-            <a href="#about" onClick={() => setIsOpen(false)}>About</a>
-            <a href="#skills" onClick={() => setIsOpen(false)}>Skills</a>
-            <a href="#experience" onClick={() => setIsOpen(false)}>Experience</a>
-            <a href="#projects" onClick={() => setIsOpen(false)}>Projects</a>
-            <a href="#contact" onClick={() => setIsOpen(false)}>Contact</a>
-
             <div className="social-links">
               <a href="https://github.com/haRRy-gRint/" target="_blank" rel="noreferrer" title="GitHub">
                 <Github size={20} />
@@ -224,7 +218,7 @@ const Navbar = () => {
           .social-links {
             border: none;
             padding: 0;
-            margin-top: 2rem;
+            margin-top: 5rem;
           }
         }
       `}</style>
