@@ -1,0 +1,293 @@
+import React, { useState } from 'react'
+import { Mail, Send, MapPin, Phone } from 'lucide-react'
+
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [status, setStatus] = useState({ type: '', message: '' });
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus({ type: '', message: '' });
+
+    try {
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus({ type: 'success', message: data.message });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setStatus({ type: 'error', message: 'Something went wrong. Please try again.' });
+      }
+    } catch (error) {
+      setStatus({ type: 'error', message: 'Failed to connect to the server. Is it running?' });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <section id="contact" className="section container">
+      <div className="section-header">
+        <span className="section-subtitle">Get In Touch</span>
+        <h2 className="section-title">Let's <span className="gradient-text">Connect</span></h2>
+      </div>
+
+      <div className="contact-grid">
+        <div className="contact-info">
+          <div className="terminal-log cyber-card">
+            <div className="log-line">{'>'} SYSTEM_READY</div>
+            <div className="log-line">{'>'} WAITING_FOR_INPUT...</div>
+            <div className="log-line">{'>'} TARGET: harshganeshwade@gmail.com</div>
+          </div>
+
+          <div className="info-items">
+            <div className="info-item">
+              <Mail className="info-icon" size={18} />
+              <div className="info-content">
+                <span className="info-label">PROTOCOL: MAIL</span>
+                <p className="info-value">harshganeshwade@gmail.com</p>
+              </div>
+            </div>
+            <div className="info-item">
+              <MapPin className="info-icon" size={18} />
+              <div className="info-content">
+                <span className="info-label">COORDS: LOC</span>
+                <p className="info-value">Sangli, Maharastra</p>
+              </div>
+            </div>
+            <div className="info-item">
+              <Phone className="info-icon" size={18} />
+              <div className="info-content">
+                <span className="info-label">COMMS: VOIP</span>
+                <p className="info-value">+91 7020125096</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="terminal-window scanline-container contact-form-wrapper">
+          <div className="terminal-header-text">harsh@cyber-os:~/portal$ ./send_secure_msg.sh</div>
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="form-group cyber-input-group">
+              <label>USER_NAME</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="root"
+                required
+              />
+            </div>
+            <div className="form-group cyber-input-group">
+              <label>USER_EMAIL</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="user@network.local"
+                required
+              />
+            </div>
+            <div className="form-group cyber-input-group">
+              <label>DATA_PAYLOAD</label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows="5"
+                placeholder="Enter encrypted message here..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" className="cyber-btn w-full" disabled={loading}>
+              {loading ? (
+                <span className="loading-wrap">
+                  <span className="loading-bar"></span>
+                  ENCRYPTING_AND_SENDING...
+                </span>
+              ) : (
+                <>TRANSMIT_SECURE_PAYLOAD <Send size={18} /></>
+              )}
+            </button>
+
+            {status.message && (
+              <div className={`status-msg ${status.type} terminal-msg`}>
+                [{status.type.toUpperCase()}] {status.message}
+              </div>
+            )}
+          </form>
+        </div>
+      </div>
+
+      <style>{`
+        .contact-grid {
+          display: grid;
+          grid-template-columns: 1fr 1.5fr;
+          gap: 4rem;
+          align-items: start;
+        }
+
+        .terminal-log {
+          padding: 1.5rem;
+          margin-bottom: 3rem;
+          border-radius: 4px;
+          font-family: var(--font-heading);
+          font-size: 0.85rem;
+        }
+
+        .log-line {
+          color: var(--primary);
+          margin-bottom: 0.5rem;
+          opacity: 0.8;
+        }
+
+        .info-items {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .info-item {
+          display: flex;
+          gap: 1.2rem;
+          align-items: center;
+        }
+
+        .info-icon {
+          color: var(--primary);
+          background: rgba(0, 255, 65, 0.05);
+          padding: 10px;
+          border: 1px solid var(--primary-glow);
+          border-radius: 4px;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .info-label {
+          display: block;
+          font-size: 0.65rem;
+          color: var(--accent);
+          font-family: var(--font-heading);
+          margin-bottom: 0.2rem;
+        }
+
+        .info-value {
+          font-size: 1rem;
+          color: var(--text-secondary);
+        }
+
+        .contact-form-wrapper {
+          padding: 2.5rem;
+          padding-top: 3.5rem;
+        }
+
+        .contact-form {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .cyber-input-group label {
+          font-family: var(--font-heading);
+          font-size: 0.75rem;
+          color: var(--primary);
+          margin-bottom: 0.5rem;
+          display: block;
+        }
+
+        .cyber-input-group input, 
+        .cyber-input-group textarea {
+          background: rgba(0, 0, 0, 0.5);
+          border: 1px solid var(--glass-border);
+          padding: 1rem;
+          color: var(--primary);
+          font-family: var(--font-heading);
+          font-size: 0.9rem;
+          width: 100%;
+          border-radius: 2px;
+          transition: var(--transition);
+        }
+
+        .cyber-input-group input:focus, 
+        .cyber-input-group textarea:focus {
+          outline: none;
+          border-color: var(--primary);
+          box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .cyber-btn {
+          background: var(--primary);
+          color: black;
+          font-family: var(--font-heading);
+          font-weight: 700;
+          padding: 1rem;
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
+          cursor: pointer;
+          transition: var(--transition);
+          text-transform: uppercase;
+        }
+
+        .cyber-btn:hover:not(:disabled) {
+          background: var(--accent);
+          box-shadow: 0 0 20px var(--accent);
+          transform: translateY(-2px);
+        }
+
+        .cyber-btn:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        .terminal-msg {
+          font-family: var(--font-heading);
+          font-size: 0.8rem;
+          margin-top: 1rem;
+          padding: 1rem;
+          border-radius: 2px;
+          text-align: left;
+        }
+
+        .success.terminal-msg { background: rgba(34, 197, 94, 0.1); border: 1px solid #22c55e; color: #22c55e; }
+        .error.terminal-msg { background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; color: #ef4444; }
+
+        @media (max-width: 968px) {
+          .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 4rem;
+          }
+        }
+      `}</style>
+    </section>
+  )
+}
+
+export default Contact
